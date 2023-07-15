@@ -26,10 +26,10 @@ public class Agendatelefonica {
                 verAgenda();
             } else if (op == 3) {
                 System.out.println("-----------Buscar contacto---------------------");
-                System.out.println("ingrese un nombre");
+                System.out.println("ingrese un telefono");
                 Scanner entrada = new Scanner(System.in);
-                String nombre = entrada.nextLine();
-                System.out.println(verContacto(nombre));
+                String telefono = entrada.nextLine();
+                System.out.println(verContacto(telefono));
             } else {
                 System.out.println("opcion incorrecta");
 
@@ -38,21 +38,20 @@ public class Agendatelefonica {
 
     }
 
-    static public String verContacto(String nombre) {
+    static public String verContacto(String telefono) {
         int posicion = -1;
         for (int i = 0; i < 15; i++) {
             if (miagenda[i] != null) {
-                if (miagenda[i].verNombre().equals(nombre)) {
+                if (miagenda[i].verTelefono().equals(telefono)) {
                     posicion = i;
                     break;
                 }
             }
         }
         if(posicion!=-1){
-            return "Domicilio : " + miagenda[posicion].verDomicilio() + "telefono: " + miagenda[posicion].verTelefono();
+            return "Nombre : " + miagenda[posicion].verNombre() + "\n Domicilio: " + miagenda[posicion].verDomicilio() ; 
             
-        }else if(posicion!=-1){
-            return "Telefono " + miagenda[posicion].verTelefono();
+        
         }else{
             return "profesor no encontrado";
         }
@@ -65,13 +64,13 @@ public class Agendatelefonica {
         } else {
             Scanner entrada = new Scanner(System.in);
             System.out.println("------Guardar nuevo contacto--------------");
+            System.out.println("Ingrese el telefono del contacto");
+            String numero = entrada.nextLine();
             System.out.println("Ingrese el nombre del contacto");
             String nombre = entrada.nextLine();
             System.out.println("Ingrese el domicilio del contacto");
             String domi = entrada.nextLine();
-            System.out.println("Ingrese el numero de telefono");
-            String numero = entrada.nextLine();
-            miagenda[contar] = new contactos(nombre, domi, numero);
+            miagenda[contar] = new contactos(nombre,domi,numero);
             System.out.println("contacto guardado");
             contar++;
         }
@@ -80,9 +79,9 @@ public class Agendatelefonica {
 
     static public void verAgenda() {
         for (int i = 0; i < contar; i++) {
+            System.out.println("Telefono: " + miagenda[i].verTelefono());
             System.out.println("Nombre: " + miagenda[i].verNombre());
             System.out.println("Domicilio: " + miagenda[i].verDomicilio());
-            System.out.println("Telefono: " + miagenda[i].verTelefono());
             System.out.println("-----------------------------------------------");
         }
     }
