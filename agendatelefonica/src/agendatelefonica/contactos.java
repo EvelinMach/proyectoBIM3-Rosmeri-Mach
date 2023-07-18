@@ -18,6 +18,12 @@ public class contactos {
    public String verTelefono(){
        return this.telefono;
    }
-    
+   public void CambiarNombre(String Nombre){
+       this.nombre=Nombre;
+       
+   }
+    public void CambiarDomicilio(String Domicilio){
+        this.domicilio=Domicilio;
+    }
     
 }
