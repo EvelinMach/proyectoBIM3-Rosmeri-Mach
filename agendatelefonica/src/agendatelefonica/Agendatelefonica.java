@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class Agendatelefonica {
 
     static contactos miagenda[] = new contactos[15];
+    
     static int contar = 0;
+    private static int i;
+   
 
     public static void main(String[] args) {
         int op = 0;
@@ -32,12 +35,23 @@ public class Agendatelefonica {
                 String telefono = entrada.nextLine();
                 System.out.println(verContacto(telefono));
             } else if (op == 4) {
-                System.out.println("---------------Modificar contacto-----------");
-                System.out.println(" ingrese un telefono");
+                
+                System.out.println("-------Modificar Contacto-----------------");
+                System.out.println("Ingrese el numero de telefono que desea modificar");
                 Scanner entrada = new Scanner(System.in);
+                
                 String telefono = entrada.nextLine();
                 System.out.println(modificarContacto(telefono));
+                
+                System.out.println("Telefono: " + miagenda[i].verTelefono());
+                System.out.println("Nombre: " + miagenda[i].verNombre());
+                System.out.println("Domicilio: " + miagenda[i].verDomicilio());
+                System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||");   
+                
+                 
+
             } else {
+
                 System.out.println("opcion incorrecta");
             }
         }
@@ -45,25 +59,35 @@ public class Agendatelefonica {
     }
 
     static public String modificarContacto(String telefono) {
+        Scanner entrada = new Scanner(System.in);
         int posicion = -1;
         for (int i = 0; i < 15; i++) {
             if (miagenda[i] != null) {
                 if (miagenda[i].verTelefono().equals(telefono)) {
                     posicion = i;
                     break;
-
                 }
             }
-        }
-        if (posicion!=-1) {
-            Scanner entrada = new Scanner(System.in);
-            System.out.println("ingrese un nuevo nombre");
+        } 
+          
+        if(posicion!=-1){
+                System.out.println("");
+                System.out.println("ingrese el nuevo nombre");
+                String nombrenue=entrada.nextLine();
+                System.out.println("ingrese el nuevo domicilio");
+                String domicilionue=entrada.nextLine();
+                miagenda[i].CambiarNombre(nombrenue);
+                miagenda[i].CambiarDomicilio(domicilionue);
+                return "Datos modificados y guardados";
+           
+        }else{
+        
             
-            
-
+        
         }
+        return "contacto no encontrado"; 
     }
-
+    
     static public String verContacto(String telefono) {
         int posicion = -1;
         for (int i = 0; i < 15; i++) {
@@ -75,10 +99,10 @@ public class Agendatelefonica {
             }
         }
         if (posicion != -1) {
-            return "Nombre: " + miagenda[posicion].verNombre() + "\n Domicilio: " + miagenda[posicion].verDomicilio();
+            return "Nombre: " + miagenda[posicion].verNombre() +"\nDomicilio: " + miagenda[posicion].verDomicilio();
 
         } else {
-            return "profesor no encontrado";
+            return "Contacto no encontrado";
         }
 
     }
@@ -107,7 +131,7 @@ public class Agendatelefonica {
             System.out.println("Telefono: " + miagenda[i].verTelefono());
             System.out.println("Nombre: " + miagenda[i].verNombre());
             System.out.println("Domicilio: " + miagenda[i].verDomicilio());
-            System.out.println("-----------------------------------------------");
+            System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||");
         }
     }
 
