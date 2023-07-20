@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class Agendatelefonica {
 
     static contactos miagenda[] = new contactos[15];
-    
+
     static int contar = 0;
     private static int i;
-   
 
     public static void main(String[] args) {
         int op = 0;
@@ -35,20 +34,18 @@ public class Agendatelefonica {
                 String telefono = entrada.nextLine();
                 System.out.println(verContacto(telefono));
             } else if (op == 4) {
-                
+
                 System.out.println("-------Modificar Contacto-----------------");
                 System.out.println("Ingrese el numero de telefono que desea modificar");
                 Scanner entrada = new Scanner(System.in);
-                
+
                 String telefono = entrada.nextLine();
                 System.out.println(modificarContacto(telefono));
-                
+                                                                             
                 System.out.println("Telefono: " + miagenda[i].verTelefono());
                 System.out.println("Nombre: " + miagenda[i].verNombre());
                 System.out.println("Domicilio: " + miagenda[i].verDomicilio());
-                System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||");   
-                
-                 
+                System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||");
 
             } else {
 
@@ -68,26 +65,25 @@ public class Agendatelefonica {
                     break;
                 }
             }
-        } 
-          
-        if(posicion!=-1){
+        }
+        for (int i = 0; i< 15; i++) {
+            if (posicion != -1) {
                 System.out.println("");
                 System.out.println("ingrese el nuevo nombre");
-                String nombrenue=entrada.nextLine();
+                String nombrenue = entrada.nextLine();
                 System.out.println("ingrese el nuevo domicilio");
-                String domicilionue=entrada.nextLine();
+                String domicilionue = entrada.nextLine();
                 miagenda[i].CambiarNombre(nombrenue);
                 miagenda[i].CambiarDomicilio(domicilionue);
                 return "Datos modificados y guardados";
-           
-        }else{
-        
-            
-        
+
+            } else {
+            }
         }
-        return "contacto no encontrado"; 
+
+        return "contacto no encontrado";
     }
-    
+
     static public String verContacto(String telefono) {
         int posicion = -1;
         for (int i = 0; i < 15; i++) {
@@ -99,7 +95,7 @@ public class Agendatelefonica {
             }
         }
         if (posicion != -1) {
-            return "Nombre: " + miagenda[posicion].verNombre() +"\nDomicilio: " + miagenda[posicion].verDomicilio();
+            return "Nombre: " + miagenda[posicion].verNombre() + "\nDomicilio: " + miagenda[posicion].verDomicilio();
 
         } else {
             return "Contacto no encontrado";
